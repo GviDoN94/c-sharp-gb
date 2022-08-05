@@ -19,9 +19,12 @@ int userNum2 = Prompt("Введите второе число > ");
 int userNum3 = Prompt("Введите третье число > ");
 int maxNum = userNum1;
 
-if (userNum2 > maxNum) {
+if (userNum2 > maxNum)
+{
     maxNum = userNum2;
-} else if (userNum3 > maxNum) {
+}
+else if (userNum3 > maxNum)
+{
     maxNum = userNum3;
 }
 

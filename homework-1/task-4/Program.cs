@@ -15,10 +15,12 @@ int Prompt(string message)
 
 int userNum = Prompt("Введите число > ");
 
-if (userNum < 1) {
+if (userNum < 1)
+{
     Console.WriteLine("Нужно ввести положительное число");
 }
 
-for (int i = 2; i <= userNum; i += 2) {
+for (int i = 2; i <= userNum; i += 2)
+{
     Console.WriteLine(i);
 }

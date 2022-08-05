@@ -16,8 +16,11 @@ int Prompt(string message)
 
 int userNum = Prompt("Введите число > ");
 
-if (userNum % 2 == 0) {
+if (userNum % 2 == 0)
+{
     Console.WriteLine("Число четное");
-} else {
+}
+else
+{
     Console.WriteLine("Число нечетное");
 }
