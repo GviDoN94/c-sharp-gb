@@ -3,7 +3,7 @@
 // 782 -> 72
 // 918 -> 98
 
-int randomNum = new Random().Next(100, 999);
+int randomNum = new Random().Next(100, 1000);
 Console.WriteLine(randomNum);
 
 int firstNum = randomNum / 100;

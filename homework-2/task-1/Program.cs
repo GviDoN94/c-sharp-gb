@@ -13,7 +13,12 @@ int Prompt(string message)
 }
 
 int userNum = Prompt("Введите трехзначное число > ");
-Console.WriteLine(userNum);
 
-int result = userNum / 10 % 10;
-Console.WriteLine(result);
+if (userNum > 999)
+{
+    Console.WriteLine("Вы ввели не трехзначное число");
+}
+else
+{
+    Console.WriteLine(userNum / 10 % 10);
+}

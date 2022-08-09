@@ -15,11 +15,18 @@ int day = Prompt("Введите номер дня недели > ");
 
 int[] week = { 0, 0, 0, 0, 0, 1, 1 };
 
-if (week[day - 1] == 1)
+if (day > 7)
 {
-    Console.WriteLine("Да");
+    Console.WriteLine("Вы ввели не правильное число");
 }
 else
 {
-    Console.WriteLine("Нет");
+    if (week[day - 1] == 1)
+    {
+        Console.WriteLine("Да");
+    }
+    else
+    {
+        Console.WriteLine("Нет");
+    }
 }
