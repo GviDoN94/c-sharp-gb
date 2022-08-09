@@ -13,3 +13,16 @@ int Prompt(string message)
 
 int userNum = Prompt("Введите число > ");
 Console.WriteLine(userNum);
+
+if (userNum < 100)
+{
+    Console.WriteLine("Третьей цифры нет");
+}
+else
+{
+    while (userNum > 999)
+    {
+        userNum /= 10;
+    }
+    Console.WriteLine(userNum % 10);
+}
