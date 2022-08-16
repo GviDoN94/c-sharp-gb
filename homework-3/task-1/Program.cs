@@ -11,29 +11,42 @@ int Prompt(string message)
     return result;
 }
 
-void PalindromeFiveDigit(int value)
+bool CheckValidNumber(int value)
 {
-    if (value >= 10000 && value < 100000)
-    {
-        int firstDigit = value / 10000;
-        int secondDigit = value / 1000 % 10;
-        int fourthDigit = value / 10 % 10;
-        int fifthDigit = value % 10;
+    return value >= 10000 && value < 100000;
+}
 
-        if (fifthDigit == fifthDigit && secondDigit == fourthDigit)
-        {
-            System.Console.WriteLine("Да");
-        }
-        else
-        {
-            System.Console.WriteLine("Нет");
-        }
+bool PalindromeFiveDigit(int value)
+{
+    int firstDigit = value / 10000;
+    int secondDigit = value / 1000 % 10;
+    int fourthDigit = value / 10 % 10;
+    int fifthDigit = value % 10;
+
+    if (fifthDigit == firstDigit && secondDigit == fourthDigit)
+    {
+        return true;
     }
     else
     {
-        System.Console.WriteLine("Вы ввели не пятизначное число");
+        return false;
     }
 }
 
 int userNum = Prompt("Введите пятизначное число > ");
-PalindromeFiveDigit(userNum);
+
+if (!CheckValidNumber(userNum))
+{
+    System.Console.WriteLine("Вы ввели не пятизначное число");
+}
+else
+{
+    if (PalindromeFiveDigit(userNum))
+    {
+        System.Console.WriteLine("Да");
+    }
+    else
+    {
+        System.Console.WriteLine("Нет");
+    }
+}
