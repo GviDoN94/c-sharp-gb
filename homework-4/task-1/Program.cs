@@ -12,6 +12,11 @@ int Prompt(string message)
 
 int Exponentiation(int num1, int num2)
 {
+    if (num2 == 0)
+    {
+        return 1;
+    }
+
     int result = num1;
     for (int i = 1; i < num2; i++)
     {
@@ -29,9 +34,9 @@ bool CheckUserNum(int userNum)
 int userNum1 = Prompt("Введите число возводимое в степень > ");
 int userNum2 = Prompt("Введите степень в которую нужно возвести число > ");
 
-if (!CheckUserNum(userNum1) || !CheckUserNum(userNum2))
+if (!CheckUserNum(userNum1))
 {
-    System.Console.WriteLine("Нужно ввести положительное число");
+    System.Console.WriteLine("Число возводимое в степень должно быть положительным");
 }
 else
 {
