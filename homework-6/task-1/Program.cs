@@ -10,7 +10,7 @@ int Prompt(string message)
     return result;
 }
 
-bool PositiveUserNumCount(int num)
+bool CheckPositiveUserNum(int num)
 {
     if (num > 0)
     {
@@ -22,7 +22,7 @@ bool PositiveUserNumCount(int num)
 int count = 0;
 while (true)
 {
-    if (PositiveUserNumCount(Prompt("Введите число > ")))
+    if (CheckPositiveUserNum(Prompt("Введите число > ")))
     {
         count++;
     }
