@@ -6,6 +6,19 @@
 // 1   -3,3   8   -9,9
 // 8    7,8  -7,1  9
 
+int Prompt(string message)
+{
+    Console.Write(message);
+    string readValue = Console.ReadLine();
+    int result = int.Parse(readValue);
+    return result;
+}
+
+bool CheckUserNum(int userNum)
+{
+    return userNum > 0;
+}
+
 int RandomPosNeg()
 {
     int random = 1;
@@ -34,7 +47,7 @@ void PrintMultiArray(double[,] multiArr)
 {
     for (int i = 0; i < multiArr.GetLength(0); i++)
     {
-        for (int j = 0; j < multiArr.GetLength(0); j++)
+        for (int j = 0; j < multiArr.GetLength(1); j++)
         {
             System.Console.Write(multiArr[i, j] + "\t");
         }
@@ -42,4 +55,14 @@ void PrintMultiArray(double[,] multiArr)
     }
 }
 
-PrintMultiArray(MultiArrayFill(3, 4));
+int m = Prompt("Введите колличество строк в массиве > ");
+int n = Prompt("Введите колличество колонок в массиве > ");
+
+if (CheckUserNum(m) && CheckUserNum(n))
+{
+    PrintMultiArray(MultiArrayFill(m, n));
+}
+else
+{
+    System.Console.WriteLine("Колличество строк и колонок не может быть отрицательным или равняться нулю");
+}
