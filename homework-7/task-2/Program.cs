@@ -79,5 +79,6 @@ if (CheckUserNum(rows) && CheckUserNum(columns))
 }
 else
 {
-    System.Console.WriteLine("Колличество строк и колонок не может быть отрицательным или равняться нулю");
+    System.Console.WriteLine("Колличество строк и колонок не может быть " +
+        "отрицательным или равняться нулю");
 }

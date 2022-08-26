@@ -64,5 +64,6 @@ if (CheckUserNum(m) && CheckUserNum(n))
 }
 else
 {
-    System.Console.WriteLine("Колличество строк и колонок не может быть отрицательным или равняться нулю");
+    System.Console.WriteLine("Колличество строк и колонок не может быть " +
+        "отрицательным или равняться нулю");
 }

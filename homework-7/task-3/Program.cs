@@ -78,9 +78,11 @@ if (CheckUserNum(rows) && CheckUserNum(columns))
     int[,] array = MultiArrayFill(rows, columns);
 
     PrintMultiArray(array);
+    System.Console.WriteLine();
     PrintArray(CalcAverageArrayColumns(array));
 }
 else
 {
-    System.Console.WriteLine("Колличество строк и колонок не может быть отрицательным или равняться нулю");
+    System.Console.WriteLine("Колличество строк и колонок не может быть " +
+        "отрицательным или равняться нулю");
 }
