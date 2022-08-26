@@ -1,13 +1,12 @@
-﻿// Задача 2: Напишите программу, которая на вход принимает позиции элемента
-// в двумерном массиве, и возвращает значение этого элемента или же указание,
-// что такого элемента нет.
+﻿// Задача 3: Задайте двумерный массив из целых чисел. Найдите среднее
+// арифметическое элементов в каждом столбце.
 
 // Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
 
-// 1 7 -> такого числа в массиве нет
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
 int Prompt(string message)
 {
@@ -47,35 +46,39 @@ void PrintMultiArray(int[,] multiArr)
     }
 }
 
-bool CheckArrayElement(int[,] arr, int row, int column)
+double[] CalcAverageArrayColumns(int[,] arr)
 {
-    if (row <= arr.GetLength(0) && column <= arr.GetLength(1))
+    double[] resultAverageArr = new double[arr.GetLength(1)];
+    for (int i = 0; i < arr.GetLength(1); i++)
     {
-        return true;
+        double averageColumn = 0;
+        for (int j = 0; j < arr.GetLength(0); j++)
+        {
+            averageColumn += arr[j, i];
+        }
+        averageColumn /= arr.GetLength(0);
+        resultAverageArr[i] = Math.Round(averageColumn, 1);
     }
-    return false;
+    return resultAverageArr;
 }
 
-int rows = Prompt("Введите количество строк массива > ");
-int columns = Prompt("Введите количество колонок массива > ");
+void PrintArray(double[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    {
+        System.Console.Write($"{arr[i]}\t");
+    }
+}
+
+int rows = Prompt("Введите количество строк > ");
+int columns = Prompt("Введите колличество колонок > ");
 
 if (CheckUserNum(rows) && CheckUserNum(columns))
 {
     int[,] array = MultiArrayFill(rows, columns);
 
     PrintMultiArray(array);
-
-    int rowPosition = Prompt("Введите позицию строки элемента > ");
-    int columnPosition = Prompt("Введите позицию колонки элемента > ");
-
-    if (CheckArrayElement(array, rowPosition, columnPosition))
-    {
-        System.Console.WriteLine(array[--rowPosition, --columnPosition]);
-    }
-    else
-    {
-        System.Console.WriteLine("В массиве нет элеманта с указанной позицией");
-    }
+    PrintArray(CalcAverageArrayColumns(array));
 }
 else
 {
