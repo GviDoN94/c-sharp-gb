@@ -90,7 +90,7 @@ if (CheckUserNum(rows) && CheckUserNum(columns))
     int[,] array = MultiArrayFill(rows, columns);
 
     PrintMultiArray(array);
-    
+
     System.Console.WriteLine("Сумма максимальных чисел в строках: " +
         CalcMaxNumRows(array));
 

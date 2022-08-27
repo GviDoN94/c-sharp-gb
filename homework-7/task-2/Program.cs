@@ -68,13 +68,21 @@ if (CheckUserNum(rows) && CheckUserNum(columns))
     int rowPosition = Prompt("Введите позицию строки элемента > ");
     int columnPosition = Prompt("Введите позицию колонки элемента > ");
 
-    if (CheckArrayElement(array, rowPosition, columnPosition))
+    if (CheckUserNum(rowPosition) && CheckUserNum(columnPosition))
     {
-        System.Console.WriteLine(array[--rowPosition, --columnPosition]);
+        if (CheckArrayElement(array, rowPosition, columnPosition))
+        {
+            System.Console.WriteLine(array[--rowPosition, --columnPosition]);
+        }
+        else
+        {
+            System.Console.WriteLine("В массиве нет элеманта с указанной позицией");
+        }
     }
     else
     {
-        System.Console.WriteLine("В массиве нет элеманта с указанной позицией");
+        System.Console.WriteLine("Значения позиции элемента не могут быть " +
+        "отрицательными или равняться нулю");
     }
 }
 else
