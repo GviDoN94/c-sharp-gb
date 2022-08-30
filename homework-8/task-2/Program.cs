@@ -1,13 +1,15 @@
-﻿// Задача 1: Задайте двумерный массив. Напишите программу, которая упорядочит
-// по убыванию элементы каждой строки двумерного массива.
+﻿// Задача 2: Задайте прямоугольный двумерный массив. Напишите программу, которая
+// будет находить строку с наименьшей суммой элементов.
+
 // Например, задан массив:
+
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-// В итоге получается вот такой массив:
-// 7 4 2 1
-// 9 5 3 2
-// 8 4 4 2
+// 5 2 6 7
+
+// Программа считает сумму элементов в каждой строке и выдаёт номер строки
+// с наименьшей суммой элементов: 1 строка
 
 int Prompt(string message)
 {
@@ -47,22 +49,36 @@ void PrintMultiArray(int[,] multiArr)
     }
 }
 
-int[,] InsertionSortRowsMaxToMinInMultiArray(int[,] arr)
+int[] SumElemsInRow(int[,] arr)
 {
+    int[] elemensSumsArr = new int[arr.GetLength(0)];
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 1; j < arr.GetLength(1); j++)
+        int sumEls = 0;
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            for (int k = j; k > 0 && arr[i, k] > arr[i, k - 1]; k--)
-            {
-                int temp = arr[i, k - 1];
-                arr[i, k - 1] = arr[i, k];
-                arr[i, k] = temp;
-            }
+            sumEls += arr[i, j];
+        }
+        elemensSumsArr[i] = sumEls;
+    }
+
+    return elemensSumsArr;
+}
+
+int NumberMinElementInArray(int[] arr)
+{
+
+    int numMinEl = 0;
+    for (int i = 1; i < arr.Length; i++)
+    {
+        if (arr[i] < arr[numMinEl])
+        {
+            numMinEl = i;
         }
     }
-    return arr;
+    return ++numMinEl;
 }
+
 
 int userRows = Prompt("Введите количество строк > ");
 int userColumns = Prompt("Введите колличество колонок > ");
@@ -73,11 +89,13 @@ if (CheckUserNum(userRows) && CheckUserNum(userColumns))
     PrintMultiArray(matrix);
     System.Console.WriteLine();
 
-    PrintMultiArray(InsertionSortRowsMaxToMinInMultiArray(matrix));
+    int numRow = NumberMinElementInArray(
+        SumElemsInRow(matrix)
+        );
+    System.Console.WriteLine($"Наименьшея сумма элеменетов в строке № {numRow}");
 }
 else
 {
     System.Console.WriteLine("Колличество строк и колонок не может быть " +
         "отрицательным или равняться нулю");
 }
-
