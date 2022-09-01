@@ -18,9 +18,9 @@ bool CheckUserNum(int userNum)
 
 int GetRangeSum(int lowerRange, int upperRange)
 {
-    if (lowerRange >= upperRange)
+    if (lowerRange > upperRange)
     {
-        return upperRange;
+        return 0;
     }
 
     return GetRangeSum(lowerRange, upperRange - 1) + upperRange;
