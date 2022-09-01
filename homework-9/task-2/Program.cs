@@ -1,7 +1,7 @@
-﻿// Задача 1: Задайте значения M и N. Напишите программу, которая выведет все чётные
-// натуральные числа в промежутке от M до N с помощью рекурсии.
-// M = 1; N = 5 -> "2, 4"
-// M = 4; N = 8 -> "4, 6, 8"
+﻿// Задача 2: Задайте значения M и N. Напишите программу, которая найдёт сумму
+// натуральных элементов в промежутке от M до N с помощью рекурсии.
+// M = 1; N = 15 -> 120
+// M = 4; N = 8 -> 30
 
 int Prompt(string message)
 {
@@ -16,19 +16,14 @@ bool CheckUserNum(int userNum)
     return userNum > 0;
 }
 
-void ShowOddDigits(int lowerRange, int upperRange)
+int GetRangeSum(int lowerRange, int upperRange)
 {
-    if (lowerRange > upperRange)
+    if (lowerRange >= upperRange)
     {
-        return;
-    }
-    else if (upperRange % 2 == 1)
-    {
-        --upperRange;
+        return upperRange;
     }
 
-    ShowOddDigits(lowerRange, upperRange - 2);
-    System.Console.Write(upperRange + "\t ");
+    return GetRangeSum(lowerRange, upperRange - 1) + upperRange;
 }
 
 int lowerRange = Prompt("Введите нижнюю границу диапазона > ");
@@ -38,7 +33,7 @@ if (CheckUserNum(lowerRange) && CheckUserNum(upperRange))
 {
     if (lowerRange < upperRange)
     {
-        ShowOddDigits(lowerRange, upperRange);
+        System.Console.WriteLine(GetRangeSum(lowerRange, upperRange));
     }
     else
     {
